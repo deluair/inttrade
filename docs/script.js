@@ -82,6 +82,8 @@ const countryData = {
     }
 };
 
+console.log('Trade dashboard initializing...');
+
 // Data generation utilities
 function generateMonthlyData(startDate, endDate, country) {
     // Input validation
@@ -481,4 +483,16 @@ document.getElementById('show-trend').addEventListener('change', updateDashboard
 document.getElementById('show-yoy').addEventListener('change', updateDashboard);
 
 // Initialize dashboard
-document.addEventListener('DOMContentLoaded', updateDashboard);
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing dashboard...');
+    
+    // Initialize the dashboard with default values
+    const defaultCountry = document.getElementById('country-selector').value;
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+    
+    console.log('Initial values:', { defaultCountry, startDate, endDate });
+    
+    // Update the dashboard
+    updateDashboard();
+});
